@@ -1,0 +1,45 @@
+<script defer>
+  const loadData = (e) => {
+    document.body.classList.add('loading');
+    google.script.run.withSuccessHandler(renderData).getStudentList();
+  }
+
+  const skipCells = [0, 1, 6, ];
+  const table = document.querySelectorAll('.student-list')[0];
+
+  const renderData = (students) => {
+    for (s in students) {
+      // if (s == 0) continue;
+      let student = students[s];
+      if (students[s][0] == '') break;
+
+      let row = document.createElement('a');
+      row.href = "#" + student[4];
+      row.classList.add('student-row');
+
+      for (let i=0, ii=student.length; i<ii; i++) {
+        if (skipCells.indexOf(i) == -1) {
+          let cell = document.createElement('div');
+          cell.classList.add('student-td');
+          cell.appendChild(document.createTextNode(student[i]));
+          row.appendChild(cell);
+        }
+
+        if (skipCells.indexOf(i) == (skipCells.length - 1)) break;
+      }
+
+      row.addEventListener('click', (e) => {
+        e.preventDefault();
+        let netID = this.href.split('#')[1];
+        alert(netID);
+        document.body.classList.remove('loading');
+      });
+
+      table.appendChild(row);
+    }
+
+    document.body.classList.remove('loading');
+  }
+
+  document.addEventListener('DOMContentLoaded', loadData)
+</script>

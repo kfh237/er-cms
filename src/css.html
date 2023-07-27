@@ -1,0 +1,145 @@
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  .loading {
+    cursor: wait;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    text-align: center;
+  }
+
+  header h1 {
+    font-size: 3em;
+    font-style: italic;
+    font-weight: 900;
+    background-image: url('https://thumbs.gfycat.com/ConcreteAnotherFrilledlizard-size_restricted.gif');
+    background-repeat: repeat-x;
+    background-size: 160px 160px;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 2px slategray;
+  }
+
+  header h1 a {
+    color: transparent;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  .loading h2 {
+    display: none;
+  }
+
+  ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    list-style-position: inside;
+    padding: 0;
+  }
+
+  .sidebar ul {
+    flex-direction: column;
+  }
+
+  li {
+    padding: 2em 4em;
+    border: 6px slategray outset;
+    background-image: url('https://tutorialsforblender3d.com/Textures/Marble/Textured/BiancoStatuario.png');
+    background-clip: border;    
+    margin: 1em;
+    width: 14em;
+    min-height: 132px;
+    display: flex;
+    align-items: center;
+  }
+
+  main {
+    display: flex;
+  }
+
+  .loading main {
+    background-image: url('https://i.gifer.com/XVo6.gif');
+    background-size: 320px 320px;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-width: 640px;
+    min-height: 480px;
+    margin: 0 auto;
+    overflow-y: hidden;
+  }
+
+  .loading main * {
+    display: none;
+  }
+
+  .sidebar {
+    width: 28em;
+    text-align: center;
+  }
+
+  /* .sidebar.bfa a[href$="?page=bfa"],
+  .sidebar.mfa a[href$="?page=mfa"],
+  .sidebar.inventory a[href$="?page=inventory"] {
+    pointer-events: none;
+    cursor: default;
+  } */
+
+  .main-view {
+    height: calc(100vh - 12em);
+    overflow: hidden;
+    overflow-y: scroll;
+  }
+
+  .main-view.welcome {
+    text-align: center;
+    width: 100%;
+    overflow-y: unset;
+  }
+
+  .student-list {
+    display: table;
+    position: relative;
+    text-align: left;
+  }
+
+  .student-row {
+    display: table-row;
+  }
+
+  a.student-row:hover {
+    background: lightgrey;
+  }
+
+  .header-row {
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    left: 0;
+    background: white;
+  }
+
+  .student-th,
+  .student-td {
+    display: table-cell;
+    border: 1px solid black;
+    padding: 6px;
+    width: 240px;
+  }
+
+  .student-th:last-child,
+  .student-td:last-child {
+    width: 120px;
+  }
+</style>

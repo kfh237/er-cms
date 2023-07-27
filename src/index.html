@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <?!= include('css') ?>
+  </head>
+  <body>
+    <header>
+      <h1><a href="<?= url ?>">PeopleSoft Friend Portal</a></h1>
+      <h2><?= title ?></h2>
+    </header>
+    <main>
+      <section class="main-view <?= page ?>">
+        <p>Please select an action:</p>
+        <ul>
+          <li><a href="<?= url ?>?page=signups">View Registered Students</a></li>
+          <li><a href="https://www.assettiger.com/persons">Asset Tiger</a></li>
+        </ul>
+      </section>
+    </main>
+    <?!= include('global-js') ?>
+  </body>
+</html>

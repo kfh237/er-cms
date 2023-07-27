@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <?!= include('css') ?>
+  </head>
+  <body>
+    <header>
+      <h1><a href="<?= url ?>">PeopleSoft Friend Portal</a></h1>
+      <h2><?= title ?></h2>
+    </header>
+    <main>
+      <section class="sidebar <?= page ?>">
+        <ul>
+          <li><a href="<?= url ?>?page=signups">View Registered Students</a></li>
+          <li><a href="https://www.assettiger.com/persons">Asset Tiger</a></li>
+        </ul>
+      </section>
+      <section class="main-view <?= page ?>">
+        <div class="student-list">
+          <div class="student-row header-row">
+            <div class="student-th">First Name</div>
+            <div class="student-th">Last Name</div>
+            <div class="student-th">Preferred Name</div>
+            <div class="student-th">netID</div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <?!= include('global-js') ?>
+    <?!= include ('signups-js') ?>
+  </body>
+</html>
