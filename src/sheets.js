@@ -10,3 +10,15 @@ function getStudentList() {
   Logger.log(JSON.stringify(students));
   return JSON.stringify(students);
 }
+
+function getStudent(netid, index) {
+  let student = {
+    'netid': netid,
+    'index': index
+  };
+
+  //load strikes and penalties from pivot table
+  //suspension table
+
+  return JSON.stringify(student);
+}

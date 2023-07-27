@@ -1,4 +1,6 @@
 <script defer>
+  let students, currentStudent;
+
   const loadData = (e) => {
     document.body.classList.add('loading');
     google.script.run.withSuccessHandler(renderData).getStudentList();
@@ -7,8 +9,8 @@
   const skipCells = [0, 1, 6];
   const table = document.querySelectorAll('.student-list')[0];
 
-  const renderData = (students) => {
-    students = JSON.parse(students);
+  const renderData = (studentList) => {
+    students = JSON.parse(studentList);
 
     for (s in students) {
       let student = students[s];
@@ -16,6 +18,7 @@
 
       let row = document.createElement('a');
       row.href = "#" + student[5];
+      row.dataset.index = s;
       row.classList.add('student-row');
 
       for (let i=0, ii=student.length; i<ii; i++) {
@@ -29,7 +32,7 @@
         if (skipCells.indexOf(i) == (skipCells.length - 1)) break;
       }
 
-      row.addEventListener('click', viewStudent);
+      row.addEventListener('click', loadStudent);
 
       table.appendChild(row);
     }
@@ -37,11 +40,18 @@
     document.body.classList.remove('loading');
   }
 
-  const viewStudent = (e) => { 
+  const loadStudent = (e) => {
     e.preventDefault();
-    let netID = e.target.parentElement.href.split('#')[1];
-    alert(netID);
-    // document.body.classList.remove('loading');
+    let row = e.target.parentElement,
+      netID = row.href.split('#')[1],
+      index = row.dataset.index;
+
+    google.script.run.withSuccessHandler(renderStudent).getStudent(netid, index);    
+  }
+
+  const renderStudent = (student) => {
+    currentStudent = JSON.parse(student);
+    console.log(currentStudent);
   }
 
   document.addEventListener('DOMContentLoaded', loadData)
