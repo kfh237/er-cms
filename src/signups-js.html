@@ -9,10 +9,7 @@
 
   const renderData = (students) => {
     for (s in students) {
-      // if (s == 0) continue;
       let student = students[s];
-      if (students[s][0] == '') break;
-
       let row = document.createElement('a');
       row.href = "#" + student[4];
       row.classList.add('student-row');
@@ -38,6 +35,7 @@
       table.appendChild(row);
     }
 
+    window.sessionStorage.setItem('students', JSON.stringify(students));
     document.body.classList.remove('loading');
   }
 
