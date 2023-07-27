@@ -4,14 +4,18 @@
     google.script.run.withSuccessHandler(renderData).getStudentList();
   }
 
-  const skipCells = [0, 1, 6, ];
+  const skipCells = [0, 1, 6];
   const table = document.querySelectorAll('.student-list')[0];
 
   const renderData = (students) => {
+    students = JSON.parse(students);
+
     for (s in students) {
       let student = students[s];
+      if (student[0] == '') break;
+
       let row = document.createElement('a');
-      row.href = "#" + student[4];
+      row.href = "#" + student[5];
       row.classList.add('student-row');
 
       for (let i=0, ii=student.length; i<ii; i++) {
@@ -25,18 +29,19 @@
         if (skipCells.indexOf(i) == (skipCells.length - 1)) break;
       }
 
-      row.addEventListener('click', (e) => {
-        e.preventDefault();
-        let netID = this.href.split('#')[1];
-        alert(netID);
-        document.body.classList.remove('loading');
-      });
+      row.addEventListener('click', viewStudent);
 
       table.appendChild(row);
     }
 
-    window.sessionStorage.setItem('students', JSON.stringify(students));
     document.body.classList.remove('loading');
+  }
+
+  const viewStudent = (e) => { 
+    e.preventDefault();
+    let netID = e.target.parentElement.href.split('#')[1];
+    alert(netID);
+    // document.body.classList.remove('loading');
   }
 
   document.addEventListener('DOMContentLoaded', loadData)
