@@ -2,13 +2,12 @@
   let links = document.querySelectorAll('a');
 
   for (let link of links) {
-    link.addEventListener('click', () => {
-      document.body.classList.add('loading');
-    });
+    link.addEventListener('click', () => document.body.classList.add('loading'));
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.remove('loading');
-  });
+  document
+    .getElementById('netid-search')
+    .addEventListener('submit', () => document.body.clasList.add('loading'));
 
+  document.addEventListener('DOMContentLoaded', () => document.body.classList.remove('loading'));
 </script>

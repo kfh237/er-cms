@@ -1,3 +1,5 @@
+const siteName = "NYU.GC.ER.CMS";
+
 // pagination:
 // every time the browser requests a page, we check the "?page=" 
 // part of the URL and load a template & dataset accordingly.
@@ -24,8 +26,9 @@ function doGet(e) {
   htmlService.title = title;
   htmlService.page = page;
   htmlService.url = ScriptApp.getService().getUrl();
+  htmlService.siteName = siteName;
 
-  return htmlService.evaluate().setTitle('NYU Game Center ER CMS | ' + title);
+  return htmlService.evaluate().setTitle(siteName + ' | ' + title);
 }
 
 // static file include for css and js partials.

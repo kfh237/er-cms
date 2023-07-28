@@ -6,7 +6,12 @@
   </head>
   <body class="loading">
     <header>
-      <h1><a href="<?= url ?>">NYU Game Center ER CMS</a></h1>
+      <h1><a href="<?= url ?>"><?= siteName ?></a></h1>
+      <form id="netid-search" action="<?= url ?>" method="get">
+        <input class="hidden" type="text" name="page" value="signups"/>
+        <input type="text" name="netid" placeholder="Search by NetID"/>
+        <input type="submit"/>
+      </form>
       <h2><?= title ?></h2>
     </header>
     <main>

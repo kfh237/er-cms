@@ -12,7 +12,12 @@
   </head>
   <body class="loading">
     <header>
-      <h1><a href="<?= url ?>">PeopleSoft Friend Portal</a></h1>
+      <h1><a href="<?= url ?>"><?= siteName ?></a></h1>
+      <form id="netid-search" action="<?= url ?>" method="get">
+        <input class="hidden" type="text" name="page" value="signups"/>
+        <input type="text" name="netid" placeholder="Search by NetID"/>
+        <input type="submit"/>
+      </form>
       <h2><?= title ?></h2>
     </header>
     <main>
@@ -45,14 +50,20 @@
       <div class="student-view-wrapper">
         <section class="student-view">
           <a id="close-student" href="<?= url ?>?page=signups">&times;</a>
-          <p><?= student.basicInfo[2] ?> <?= student.basicInfo[3] ?></p>
-          <p>Preferred Name: <? student.basicInfo[4] ?></p>
-          <p>Signup Date: <?= student.basicInfo[0] ?></p>
-          <p>Email: <a href="mailto:<?= student.basicInfo[1] ?>"><?= student.basicInfo[1] ?></a></p>
-          <p>
+          <section id="basic-info">
+            <p><?= student.basicInfo[2] ?> <?= student.basicInfo[3] ?></p>
+            <p>Preferred Name: <? student.basicInfo[4] ?></p>
+            <p>Signup Date: <?= student.basicInfo[0] ?></p>
+            <p>Email: <a href="mailto:<?= student.basicInfo[1] ?>"><?= student.basicInfo[1] ?></a></p>
+          </section>
+          <section id="er-info">
+            <p>Strikes: <?= student.strikes ?></p>
+            <p>Penalties: <?= student.penalties ?></p>
+            <p>Suspension Status:</p>
+          </section>
+          <section id="er-actions">
             <a href="<?= strikeForm ?><?= netid ?>">Issue a Strike or Penalty</a>
             <a href="<?= banForm ?><?= netid ?>">Issue a Suspension</a>
-          </p>
         </section>
       </div>
       <? } ?>

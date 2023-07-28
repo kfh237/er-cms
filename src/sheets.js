@@ -25,14 +25,14 @@ function getStudent(netid, studentList) {
     }
   }
 
+  //load strikes and penalties from pivot table
   const pivotTables = ss.getSheetByName('Incidents').getPivotTables();
 
-  for (const pt of pivotTables) {
-    Logger.log(JSON.stringify(pt.getPivotValues()));
-  }
+  // for (const pt of pivotTables) {
+  //   Logger.log(JSON.stringify(pt.getPivotValues()));
+  // }
 
-  //load strikes and penalties from pivot table
-  //suspension table
+  //fetch all rows from suspension table w/ matching id.
 
   return student;
 }
