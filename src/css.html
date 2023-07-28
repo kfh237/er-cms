@@ -57,7 +57,7 @@
     padding: 2em 4em;
     border: 6px slategray outset;
     background-image: url('https://tutorialsforblender3d.com/Textures/Marble/Textured/BiancoStatuario.png');
-    background-clip: border;    
+    background-clip: border-box;
     margin: 1em;
     width: 14em;
     min-height: 132px;
@@ -99,7 +99,7 @@
   .main-view {
     height: calc(100vh - 12em);
     overflow: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   .main-view.welcome {
@@ -130,6 +130,10 @@
     background: white;
   }
 
+  .student-th {
+    text-align: center;
+  }
+
   .student-th,
   .student-td {
     display: table-cell;
@@ -141,5 +145,53 @@
   .student-th:last-child,
   .student-td:last-child {
     width: 120px;
+  }
+
+  #hidden-inputs {
+    display: none;
+    pointer-events: none;
+  }
+
+  .student-view-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .student-view {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 64vw;
+    height: 72vh;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 2em 4em;
+    background-image: url('https://tutorialsforblender3d.com/Textures/Marble/Textured/BiancoStatuario.png');
+    background-clip: border-box;
+    border: 6px slategray outset;
+    text-align: center;
+  }
+
+  .student-view #close-student {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-decoration: none;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    border: 1px solid slategray;
+    display: block;
+    background: rgba(255,255,255,0.3);
+    color: slategray;
+  }
+
+  .student-view p {
+    background: rgba(255,255,255,0.3);
+    padding: 0.25em;
+    border: 1px solid slategray;
   }
 </style>

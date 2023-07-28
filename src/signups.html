@@ -3,8 +3,14 @@
   <head>
     <base target="_top">
     <?!= include('css') ?>
+
+    <?
+    const strikeForm = 'https://docs.google.com/forms/d/e/1FAIpQLScx5G-r9tsFE9_VQc4u3c50s7krQgD22tYl_hTYRxofYKsUQg/viewform?usp=pp_url&entry.623932798=',
+      banForm = 'https://docs.google.com/forms/d/e/1FAIpQLSfGyrqZ4MZQz_iJWzjogJoBK7yCHZVUVcmVGncMQddlG2YVVw/viewform?usp=pp_url&entry.917868986=';
+    ?>
+
   </head>
-  <body>
+  <body class="loading">
     <header>
       <h1><a href="<?= url ?>">PeopleSoft Friend Portal</a></h1>
       <h2><?= title ?></h2>
@@ -25,9 +31,32 @@
             <div class="student-th">netID</div>
           </div>
         </div>
+        <? for (let row of studentList) { ?>
+          <? if (row[0] == '') continue; ?>
+          <a href="<?= url ?>?page=signups&netid=<?= row[5] ?>" class="student-row">
+            <div class="student-td"><?= row[2] ?></div>
+            <div class="student-td"><?= row[3] ?></div>
+            <div class="student-td"><?= row[4] ?></div>
+            <div class="student-td"><?= row[5] ?></div>
+          </a>
+        <? } ?>
       </section>
+      <? if (!!netid) { ?>
+      <div class="student-view-wrapper">
+        <section class="student-view">
+          <a id="close-student" href="<?= url ?>?page=signups">&times;</a>
+          <p><?= student.basicInfo[2] ?> <?= student.basicInfo[3] ?></p>
+          <p>Preferred Name: <? student.basicInfo[4] ?></p>
+          <p>Signup Date: <?= student.basicInfo[0] ?></p>
+          <p>Email: <a href="mailto:<?= student.basicInfo[1] ?>"><?= student.basicInfo[1] ?></a></p>
+          <p>
+            <a href="<?= strikeForm ?><?= netid ?>">Issue a Strike or Penalty</a>
+            <a href="<?= banForm ?><?= netid ?>">Issue a Suspension</a>
+          </p>
+        </section>
+      </div>
+      <? } ?>
     </main>
     <?!= include('global-js') ?>
-    <?!= include ('signups-js') ?>
   </body>
 </html>

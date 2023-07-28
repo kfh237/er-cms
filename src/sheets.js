@@ -7,18 +7,32 @@ function getStudentList() {
     lc = sheet.getLastColumn(),
     students = sheet.getRange(2, 1, lr, lc).getValues();
 
-  Logger.log(JSON.stringify(students));
-  return JSON.stringify(students);
+  return students;
 }
 
-function getStudent(netid, index) {
+function getStudent(netid, studentList) {
   let student = {
-    'netid': netid,
-    'index': index
+    basicInfo: [],
+    strikes: 0,
+    penalties: 0,
+    suspended: false
   };
+
+  for (s of studentList) {
+    if (s[5] == netid) {
+      student.basicInfo = s;
+      break;
+    }
+  }
+
+  const pivotTables = ss.getSheetByName('Incidents').getPivotTables();
+
+  for (const pt of pivotTables) {
+    Logger.log(JSON.stringify(pt.getPivotValues()));
+  }
 
   //load strikes and penalties from pivot table
   //suspension table
 
-  return JSON.stringify(student);
+  return student;
 }
