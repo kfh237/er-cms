@@ -21,12 +21,6 @@
       <h2><?= title ?></h2>
     </header>
     <main>
-      <section class="sidebar <?= page ?>">
-        <ul>
-          <li><a href="<?= url ?>?page=signups">View Registered Students</a></li>
-          <li><a href="https://www.assettiger.com/persons">Asset Tiger</a></li>
-        </ul>
-      </section>
       <section class="main-view <?= page ?>">
         <div class="student-list">
           <div class="student-row header-row">
@@ -68,6 +62,9 @@
       </div>
       <? } ?>
     </main>
+    <footer>
+      <a href="https://www.assettiger.com/persons">Asset Tiger</a>
+    </footer>
     <?!= include('global-js') ?>
   </body>
 </html>
