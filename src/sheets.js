@@ -12,27 +12,43 @@ function getStudentList() {
 
 function getStudent(netid, studentList) {
   let student = {
-    basicInfo: [],
-    strikes: 0,
-    penalties: 0,
-    suspended: false
+    netid: netid
   };
 
-  for (s of studentList) {
-    if (s[5] == netid) {
-      student.basicInfo = s;
-      break;
-    }
-  }
+  student.basicInfo = getBasicInfo(netid, studentList);
 
-  //load strikes and penalties from pivot table
-  const pivotTables = ss.getSheetByName('Incidents').getPivotTables();
+  let pt = ss.getSheetByName('Incidents'),
+    lr = pt.getLastRow(),
+    lc = pt.getLastColumn(),
+    r = pt.getRange(1, 1, lr, lc).getValues();
 
-  // for (const pt of pivotTables) {
-  //   Logger.log(JSON.stringify(pt.getPivotValues()));
-  // }
+  student.incidents = getIncidents(netid, r);
+
+  Logger.log(JSON.stringify(student));
 
   //fetch all rows from suspension table w/ matching id.
 
   return student;
+}
+
+function getBasicInfo(netid, studentList) {
+  for (s of studentList) {
+    if (s[5] == netid) return s;
+  }
+}
+
+function getIncidents(netid, incidentList) {
+  const incidents = {
+    strikes: 0,
+    penalties: 0
+  };
+
+  for (i of incidentList) {
+    if (i[1] == netid) {
+      const type = i[2] == 'Strike' ? 'strikes' : 'penalties';
+      incidents[type]++;
+    }
+  }
+
+  return incidents;
 }

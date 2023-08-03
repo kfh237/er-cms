@@ -1,8 +1,5 @@
 const siteName = "NYU.GC.ER.CMS";
 
-// pagination:
-// every time the browser requests a page, we check the "?page=" 
-// part of the URL and load a template & dataset accordingly.
 function doGet(e) {
   let htmlService, title, page;
 
@@ -31,8 +28,6 @@ function doGet(e) {
   return htmlService.evaluate().setTitle(siteName + ' | ' + title);
 }
 
-// static file include for css and js partials.
-// note we can't render template syntax via this include function 
 function include(filename) {
   return HtmlService.createHtmlOutputFromFile(filename).getContent();
 }
